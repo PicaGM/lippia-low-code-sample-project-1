@@ -1,10 +1,4 @@
 {
-  "memberships": [
-    {
-      "hourlyRate": {
-        "amount": 6
-      },
-      "userId": "6532bafc671f3c6ed91e3331"
-    }
-  ]
+  "archived": true,
+  "isPublic": true
 }

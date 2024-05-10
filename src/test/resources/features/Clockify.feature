@@ -52,11 +52,10 @@ Feature: Comprobar el funcionamiento de API Clockify
   Scenario: Modificar un proyecto del Workspace
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
-    And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}/memberships
+    And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
     And body jsons/bodies/modify.json
-    When execute method PATCH
+    When execute method PUT
     Then the status code should be 200
-    * validate response should be $.memberships[0].hourlyRate.amount = 6
 
   @DeleteProject
   Scenario: Eliminar un proyecto del Workspace
@@ -64,6 +63,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     And base url https://api.clockify.me/api
     And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
     When execute method DELETE
+    And print response
     Then the status code should be 200
 
   @AddClient
@@ -83,15 +83,6 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method GET
     Then the status code should be 200
 
-  @GetTasks
-    Scenario: Encontrar las tareas de un Proyecto
-    Given call Clockify.feature@GetProjects
-    And base url https://api.clockify.me/api
-    And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}/tasks
-    When execute method GET
-    Then the status code should be 200
-    * define taskId = $.[0].id
-
   @AddTask
   Scenario: Añadir una tarea a un Proyecto
     Given call Clockify.feature@GetProjects
@@ -100,6 +91,15 @@ Feature: Comprobar el funcionamiento de API Clockify
     And body jsons/bodies/task.json
     When execute method POST
     Then the status code should be 201
+
+  @GetTasks
+    Scenario: Encontrar las tareas de un Proyecto
+    Given call Clockify.feature@GetProjects
+    And base url https://api.clockify.me/api
+    And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}/tasks
+    When execute method GET
+    Then the status code should be 200
+    * define taskId = $.[0].id
 
   @UpdateTask
   Scenario: Modificar una tarea de un Proyecto
