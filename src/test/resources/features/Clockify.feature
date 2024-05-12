@@ -14,11 +14,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     Then the status code should be 200
     * define workspaceId = $.[0].id
 
-<<<<<<< Updated upstream
   @AddWorkspace @Smoke
-=======
-  @AddWorkspace
->>>>>>> Stashed changes
     Scenario: Añadir un nuevo Workspace
     Given base url https://api.clockify.me
     And endpoint /api/v1/workspaces
@@ -26,11 +22,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-<<<<<<< Updated upstream
   @NewProject @Smoke
-=======
-  @NewProject
->>>>>>> Stashed changes
   Scenario: Crear un nuevo proyecto en el Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -65,11 +57,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method PUT
     Then the status code should be 200
 
-<<<<<<< Updated upstream
   @DeleteProject @Smoke
-=======
-  @DeleteProject
->>>>>>> Stashed changes
   Scenario: Eliminar un proyecto del Workspace
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -78,11 +66,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     And print response
     Then the status code should be 200
 
-<<<<<<< Updated upstream
   @AddClient @Smoke
-=======
-  @AddClient
->>>>>>> Stashed changes
   Scenario: Añadir un cliente al Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -91,11 +75,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-<<<<<<< Updated upstream
   @FindClients @Smoke
-=======
-  @FindClients
->>>>>>> Stashed changes
   Scenario: Encontrar los clientes del Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -103,11 +83,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method GET
     Then the status code should be 200
 
-<<<<<<< Updated upstream
   @AddTask @Smoke
-=======
-  @AddTask
->>>>>>> Stashed changes
   Scenario: Añadir una tarea a un Proyecto
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -116,11 +92,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-<<<<<<< Updated upstream
   @GetTasks @Smoke
-=======
-  @GetTasks
->>>>>>> Stashed changes
     Scenario: Encontrar las tareas de un Proyecto
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -129,11 +101,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     Then the status code should be 200
     * define taskId = $.[0].id
 
-<<<<<<< Updated upstream
   @UpdateTask @Smoke
-=======
-  @UpdateTask
->>>>>>> Stashed changes
   Scenario: Modificar una tarea de un Proyecto
     Given call Clockify.feature@GetTasks
     And base url https://api.clockify.me/api
@@ -142,11 +110,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method PUT
     Then the status code should be 200
 
-<<<<<<< Updated upstream
   @DeleteTask @Smoke
-=======
-  @DeleteTask
->>>>>>> Stashed changes
   Scenario: Eliminar una tardea de un Proyecto
     Given call Clockify.feature@GetTasks
     And base url https://api.clockify.me/api
