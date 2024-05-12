@@ -1,4 +1,4 @@
-@Clockify
+@Clockify @Regression
 Feature: Comprobar el funcionamiento de API Clockify
 
   Background:
@@ -6,7 +6,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     And header Accept = */*
     And header x-api-key = YTI4ZWMzYzAtNmNhMS00ZTllLWJjMzMtMzhkZDliYjNlNjE2
 
-  @GetWorkspace
+  @GetWorkspace @Smoke
   Scenario: Obtener los Workspace
     Given base url https://api.clockify.me
     And endpoint /api/v1/workspaces
@@ -14,7 +14,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     Then the status code should be 200
     * define workspaceId = $.[0].id
 
-  @AddWorkspace
+  @AddWorkspace @Smoke
     Scenario: Añadir un nuevo Workspace
     Given base url https://api.clockify.me
     And endpoint /api/v1/workspaces
@@ -22,7 +22,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-  @NewProject
+  @NewProject @Smoke
   Scenario: Crear un nuevo proyecto en el Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -31,7 +31,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-  @GetProjects
+  @GetProjects @Smoke
   Scenario: Buscar los todos proyectos en el Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -40,7 +40,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     Then the status code should be 200
     * define projectId = $.[0].id
 
-  @FindProject
+  @FindProject @Smoke
   Scenario: Encontrar un proyecto por ID en el Workspace
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -48,7 +48,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method GET
     Then the status code should be 200
 
-  @ModifyProject
+  @ModifyProject @Smoke
   Scenario: Modificar un proyecto del Workspace
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -57,7 +57,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method PUT
     Then the status code should be 200
 
-  @DeleteProject
+  @DeleteProject @Smoke
   Scenario: Eliminar un proyecto del Workspace
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -66,7 +66,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     And print response
     Then the status code should be 200
 
-  @AddClient
+  @AddClient @Smoke
   Scenario: Añadir un cliente al Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -75,7 +75,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-  @FindClients
+  @FindClients @Smoke
   Scenario: Encontrar los clientes del Workspace
     Given call Clockify.feature@GetWorkspace
     And base url https://api.clockify.me/api
@@ -83,7 +83,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method GET
     Then the status code should be 200
 
-  @AddTask
+  @AddTask @Smoke
   Scenario: Añadir una tarea a un Proyecto
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -92,7 +92,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method POST
     Then the status code should be 201
 
-  @GetTasks
+  @GetTasks @Smoke
     Scenario: Encontrar las tareas de un Proyecto
     Given call Clockify.feature@GetProjects
     And base url https://api.clockify.me/api
@@ -101,7 +101,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     Then the status code should be 200
     * define taskId = $.[0].id
 
-  @UpdateTask
+  @UpdateTask @Smoke
   Scenario: Modificar una tarea de un Proyecto
     Given call Clockify.feature@GetTasks
     And base url https://api.clockify.me/api
@@ -110,7 +110,7 @@ Feature: Comprobar el funcionamiento de API Clockify
     When execute method PUT
     Then the status code should be 200
 
-  @DeleteTask
+  @DeleteTask @Smoke
   Scenario: Eliminar una tardea de un Proyecto
     Given call Clockify.feature@GetTasks
     And base url https://api.clockify.me/api
