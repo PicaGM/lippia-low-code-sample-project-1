@@ -63,7 +63,6 @@ Feature: Comprobar el funcionamiento de API Clockify
     And base url https://api.clockify.me/api
     And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
     When execute method DELETE
-    And print response
     Then the status code should be 200
 
   @AddClient @Smoke
